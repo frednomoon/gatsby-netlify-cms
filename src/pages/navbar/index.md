@@ -10,5 +10,7 @@ menuItems:
   - label: past meetups
     linkType: internal
     linkURL: /meetups
+  - label: yolo
+    linkType: internal
+    linkURL: /yolo
 ---
-

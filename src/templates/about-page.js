@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import ReactMarkdown from "react-markdown";
-import Helmet from "react-helmet";
+import React from "react"
+import PropTypes from "prop-types"
+import { graphql } from "gatsby"
+import ReactMarkdown from "react-markdown"
+import Helmet from "react-helmet"
 
-import Layout from "../components/Layout";
-import HTMLContent from "../components/Content";
-import "../styles/about-page.scss";
+import Layout from "../components/Layout"
+import HTMLContent from "../components/Content"
+import "../styles/about-page.scss"
 
 export const AboutPageTemplate = props => {
-  const { page } = props;
+  const { page } = props
 
   return (
     <article className="about">
@@ -19,7 +19,10 @@ export const AboutPageTemplate = props => {
             <h1 className="about-title">{page.frontmatter.title}</h1>
           </div>
           <div className="about-imageWrapper">
-            <img src={page.frontmatter.mainImage.image} alt={page.frontmatter.mainImage.imageAlt} />
+            <img
+              src={page.frontmatter.mainImage.image}
+              alt={page.frontmatter.mainImage.imageAlt}
+            />
           </div>
         </section>
         <section className="section">
@@ -46,7 +49,9 @@ export const AboutPageTemplate = props => {
       </section>
       <section className="section  organizers  about-organizers">
         <div className="container  organizers-container">
-          <h2 className="organizers-title">{page.frontmatter.organizers.title}</h2>
+          <h2 className="organizers-title">
+            {page.frontmatter.organizers.title}
+          </h2>
           <ul className="organizers-list">
             {page.frontmatter.organizers.gallery.map((galleryImage, index) => (
               <li key={index} className="organizers-listItem">
@@ -55,24 +60,27 @@ export const AboutPageTemplate = props => {
                   src={galleryImage.image}
                   alt={galleryImage.imageAlt}
                 />
-                <span className="organizers-listItemName">{galleryImage.name}</span>
+                <span className="organizers-listItemName">
+                  {galleryImage.name}
+                </span>
               </li>
             ))}
           </ul>
         </div>
       </section>
     </article>
-  );
-};
+  )
+}
 
 const AboutPage = ({ data }) => {
-  const { markdownRemark: page, footerData, navbarData } = data;
+  const { markdownRemark: page, footerData, navbarData } = data
   const {
     frontmatter: {
-      seo: { title: seoTitle, description: seoDescription, browserTitle },
-    },
-  } = page;
+      seo: { title: seoTitle, description: seoDescription, browserTitle }
+    }
+  } = page
 
+  console.log(data)
   return (
     <Layout footerData={footerData} navbarData={navbarData}>
       <Helmet>
@@ -80,16 +88,16 @@ const AboutPage = ({ data }) => {
         <meta name="description" content={seoDescription} />
         <title>{browserTitle}</title>
       </Helmet>
-      <AboutPageTemplate page={{ ...page, bodyIsMarkdown: false }} />
+      <div>{JSON.stringify(data)}</div>
     </Layout>
-  );
-};
+  )
+}
 
 AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
-};
+  data: PropTypes.object.isRequired
+}
 
-export default AboutPage;
+export default AboutPage
 
 export const aboutPageQuery = graphql`
   query AboutPage($id: String!) {
@@ -123,4 +131,4 @@ export const aboutPageQuery = graphql`
     }
     ...LayoutFragment
   }
-`;
+`

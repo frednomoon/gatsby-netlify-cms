@@ -8,63 +8,28 @@ public_folder: /img
 display_url: https://gatsby-netlify-cms-example.netlify.com/
 
 collections:
-  - name: "meetups"
-    label: "Meetups"
-    description: "Meetup dates, location, and presenter information."
-    folder: "src/pages/meetups"
-    create: true
-    fields:
-      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "meetup" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - {
-          label: Presenters,
-          name: presenters,
-          required: true,
-          widget: list,
-          fields:
-            [
-              { label: Name, name: name, required: true, widget: string },
-              {
-                label: Presentation Title,
-                name: presentationTitle,
-                required: false,
-                widget: string,
-              },
-              {
-                label: Image,
-                name: image,
-                required: false,
-                hint: "If an image isn't specified, a default headshot placeholder image will be used",
-                widget: image,
-              },
-              { label: Text, name: text, required: true, widget: text },
-              {
-                label: Links,
-                name: links,
-                required: false,
-                widget: list,
-                fields:
-                  [
-                    { label: Text, name: linkText, widget: string },
-                    { label: URL, name: linkURL, widget: string },
-                  ],
-              },
-            ],
-        }
-      - {
-          label: "Location",
-          name: "location",
-          required: true,
-          widget: "object",
-          fields:
-            [
-              { label: "Name", name: "name", widget: "string" },
-              { label: "Google Maps Link", name: "mapsLink", widget: "string" },
-              { label: "Latitude", name: "mapsLatitude", widget: "number", valueType: "float" },
-              { label: "Longitude", name: "mapsLongitude", widget: "number", valueType: "float" },
-            ],
-        }
+ - name: "artists"
+  label: "Artists"
+  description: "duh"
+  folder: "src/pages/artists"
+  create: true
+  fields:
+    - { label: "Template Key", name: "templateKey", widget: "hidden", default: "artist" }
+    - { label: "Title", name: "title", widget: "string" }
+    - { label: "Path", name: "path", widget: "string" }
+    - { label: "Real Name", name: "path", widget: "string" }
+    - { label: "Path", name: "path", widget: "string" }
+    - {
+        label: Links,
+        name: links,
+        required: true,
+        widget: list,
+        fields: [
+            { label: Url, name: url, required: true, widget: string },
+            { label: Name, name: name, required: true, widget: string },
+        ]
+      }
+
   - name: "pages"
     label: "Pages"
     files:
